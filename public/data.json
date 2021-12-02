@@ -1,8 +1,8 @@
 {
     "indexPage": 100,
     "indexUrl": "http://book.zongheng.com/store.html",
-    "indexUrlT": "https://wynqj399.com/",
-    "indexUrlX": "https://mbz889.com/",
+    "indexUrlT": "",
+    "indexUrlX": "",
     "indexSearch": "https://search.btfox.pw/search?word=",
     "indexPat": "&pageNo=",
     "IndexAzn": true

@@ -3,7 +3,7 @@
  * @Description: 
  * @Author: MArio
  * @Date: 2021-11-18 08:18:54
- * @LastEditTime: 2021-12-02 13:09:10
+ * @LastEditTime: 2021-12-02 16:03:34
  * @LastEditors: MArio
 -->
 <template>
@@ -1923,7 +1923,7 @@ export default {
       whetherSearch: "off",
       currentStatusContent: "暂无搜索结果",
       promptContent:
-        "欢迎使用omega-ai-2 磁力搜索 omega-ai-2 可以搜索影视/书籍...符合网络要求资源 本应用已过滤淫秽，色情等违法资源",
+        "欢迎使用豚悦资源搜索器 磁力搜索 豚悦资源搜索器 可以搜索影视/书籍...符合网络要求资源 本应用已力过滤淫秽，色情等违法资源 但可能出现漏网之鱼 请不要下载",
       pageNumber: 1,
       PageIndex: [],
       paged: 0,
@@ -2087,6 +2087,7 @@ export default {
         this.whetherSearch = "off";
         this.pictureValue = "O1";
         this.loadTi = "T2";
+         this.currentStatusContent = "努力搜索中";
         this.promptContent = "omega-ai-2搜索：《" + newValue + "》有以下结果！";
         axios
           .get(this.indexSearch + newValue, { timeout: 120000 })
@@ -2133,14 +2134,16 @@ export default {
             this.whetherSearch = "off";
             this.pictureValue = "O2";
             this.loadTi = "T1";
+             this.currentStatusContent = "暂无搜索结果";
             console.log(err);
           });
       } else {
         this.promptContent =
-          "欢迎使用omega-ai-2 磁力搜索 omega-ai-2 可以搜索影视/书籍...符合网络要求资源 本应用已过滤淫秽，色情等违法资源";
+          "欢迎使用豚悦资源搜索器 磁力搜索 豚悦资源搜索器 可以搜索影视/书籍...符合网络要求资源 本应用已力过滤淫秽，色情等违法资源 但可能出现漏网之鱼 请不要下载";
         this.whetherSearch = "off";
         this.pictureValue = "O2";
         this.loadTi = "T1";
+        this.currentStatusContent = "暂无搜索结果";
       }
     },
     paged(newValue, oldValue) {

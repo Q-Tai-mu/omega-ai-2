@@ -3,7 +3,7 @@
  * @Description: 
  * @Author: MArio
  * @Date: 2021-11-26 23:23:25
- * @LastEditTime: 2021-12-01 11:08:50
+ * @LastEditTime: 2021-12-02 14:39:58
  * @LastEditors: MArio
 -->
 <template>
@@ -42,5 +42,6 @@ body #app {
   /* text-align: center; */
   /* color: #2c3e50; */
   /* margin-top: 60px; */
+
 }
 </style>

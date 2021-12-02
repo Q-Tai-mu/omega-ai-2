@@ -3,7 +3,7 @@
  * @Description: 
  * @Author: MArio
  * @Date: 2021-11-17 17:18:26
- * @LastEditTime: 2021-11-28 21:01:55
+ * @LastEditTime: 2021-12-02 14:39:55
  * @LastEditors: MArio
 -->
 <template>
@@ -46,5 +46,6 @@ export default {
   border-block-color: #fff;
   background-color: #f3f3f3;
   border-radius: 5px;
+
 }
 </style>
