@@ -3,27 +3,45 @@
  * @Description: 
  * @Author: MArio
  * @Date: 2021-11-17 17:18:26
- * @LastEditTime: 2021-12-02 14:39:55
+ * @LastEditTime: 2021-12-02 17:18:49
  * @LastEditors: MArio
 -->
 <template>
   <div id="layout">
     <TitleBlock />
-     <div class="layoutPan">
-         <HomePage v-show="view === 'No1On'" />
-     </div>
+    <div class="layoutPan">
+      <HomePage v-if="view === 'No1On'" />
+      <HelloWorld v-if="view === 'No2On'" msg="豚悦资源搜索器" />
+    </div>
   </div>
 </template>
 
 <script>
 import TitleBlock from "../components/TitleBlock";
 import HomePage from "../components/HomePage";
+import HelloWorld from "../components/HelloWorld";
+import { mapMutations } from "vuex";
 export default {
   name: "layout",
-  components: { TitleBlock,HomePage},
+  components: { TitleBlock, HomePage, HelloWorld },
   computed: {
-    view() {
-      return this.$store.getters.getView;
+    view: {
+      get() {
+        return this.$store.getters.getView;
+      },
+      set(val) {
+        this.SET_VIEW(val);
+      },
+    },
+  },
+  created() {
+    setTimeout(this.onSetView,3000);
+  },
+  methods: {
+    ...mapMutations(["SET_VIEW"]),
+    onSetView() {
+      console.log();
+      this.view = "No1On";
     },
   },
 };
@@ -46,6 +64,5 @@ export default {
   border-block-color: #fff;
   background-color: #f3f3f3;
   border-radius: 5px;
-
 }
 </style>

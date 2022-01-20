@@ -2093,8 +2093,10 @@ export default {
           .get(this.indexSearch + newValue, { timeout: 120000 })
           .then((resp) => {
             var $ = cheerio.load(resp.data);
+
             var arr1 = [];
             var _this = this;
+
             $("div.layui-col-xs12 div.layui-collapse").each(function (i, e) {
               var pro = {
                 svgI: _this.svgIur[Math.floor(Math.random() * 42)],
@@ -2127,6 +2129,7 @@ export default {
               };
               arr1.push(pro);
             });
+
             this.searchResult = arr1;
             this.whetherSearch = "on";
           })
