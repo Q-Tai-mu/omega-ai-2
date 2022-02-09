@@ -262,6 +262,19 @@
                 this.$Message.error("历史配置文件加载异常");
                 console.log(err);
             })
+
+            axios
+                .get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/hotsearch.json").then((resp) => {
+                for (var i = 0; i < resp.data["hotSearch"].length; i++) {
+                    if (i < 10) {
+                        this.historys.push(resp.data["history"][i]);
+                    }
+                }
+
+            }).catch((err) => {
+                this.$Message.error("热搜配置文件加载异常");
+                console.log(err);
+            })
         },
         methods: {
             ...mapMutations(["SET_HURL"]),
