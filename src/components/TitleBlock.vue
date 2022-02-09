@@ -232,8 +232,7 @@
         methods: {
             ...mapMutations(["SET_HURL"]),
             search() {
-                console.log(this.searchValue);
-                this.hurl = this.searchValue;
+
             },
             minWindow() {
                 // ipcRenderer.send("minWindow");

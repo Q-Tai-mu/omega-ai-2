@@ -110,7 +110,7 @@
                             <!-- 原标题：蜘蛛侠3时长149分钟，追平<em>复仇者联盟</em>3，电光人秃头问题解决了
                             11月28日下午，外媒曝光《蜘蛛侠：英雄无归》时长确定为149分钟，与《<em>复仇者联盟</em>3》持平，成为历代蜘蛛侠中最长影片！
                             蜘蛛侠与朋友们进入到奇异博士不慎开启的多元宇宙中， -->
-<!--                            {{ item.text }}-->
+                            <!--                            {{ item.text }}-->
                             <div class="home-pen">
                                 <span class="label label-primary"><b>{{item.textSize}}</b></span>
                             </div>
@@ -428,16 +428,24 @@
                     this.indexUrlX = resp.data.indexUrlX;
                     this.IndexAzn = resp.data.IndexAzn;
                     // // this.doInit();
-                    this.$Modal.warning({
-                        styles:"top:50px",
-                        content:"s"
-                            });
+                    axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/notice.json").then((resp) => {
+                        this.$Modal.warning({
+                            styles: "top:50px",
+                            content:"1"+ resp.data["content"]
+                        });
+                    }).catch((err) => {
+                        this.$Message.error("公告加载异常");
+                        setTimeout(this.closeWin, 3000);
+                        console.log(err);
+                    });
                 })
                 .catch((err) => {
                     this.$Message.error("配置文件加载异常");
                     setTimeout(this.closeWin, 3000);
                     console.log(err);
                 });
+
+
         },
         watch: {
             hurl: function (newValue, oldValue) {
@@ -465,10 +473,10 @@
                                 var pro = {
                                     svgI: _this.svgIur[Math.floor(Math.random() * 42)],
                                     etitle: $($($(e).children("div.panel-body")).children("h5.item-title")).children("a").text(),
-                                    title:$($($(e).children("div.panel-body")).children("h5.item-title")).children("a").html(),
-                                    textSize:$($($($($($(e).children("div.panel-body")).children("table").children("tbody"))).children("tr")).children("td")[2]).text(),
-                                    textTime:$($($($($($(e).children("div.panel-body")).children("table").children("tbody"))).children("tr")).children("td")[3]).text(),
-                                    href:$($($(e).children("div.panel-body")).children("h5.item-title")).children("a").attr("href")
+                                    title: $($($(e).children("div.panel-body")).children("h5.item-title")).children("a").html(),
+                                    textSize: $($($($($($(e).children("div.panel-body")).children("table").children("tbody"))).children("tr")).children("td")[2]).text(),
+                                    textTime: $($($($($($(e).children("div.panel-body")).children("table").children("tbody"))).children("tr")).children("td")[3]).text(),
+                                    href: $($($(e).children("div.panel-body")).children("h5.item-title")).children("a").attr("href")
                                 }
                                 arr1.push(pro);
                             })
@@ -706,7 +714,7 @@
                 console.log(c);
                 this.$Notify({
                     title: "复制链接",
-                    message:""+e,
+                    message: "" + e,
                     duration: 10000,
                 });
                 this.$Message.success({
@@ -738,13 +746,15 @@
 
 <style scoped>
     @import "../assets/css/three-dots.min.css";
+
     .clock:before {
         content: "\ea4d";
     }
-  .home-pen {
-      float: left;
-      margin-right: 10px;
-  }
+
+    .home-pen {
+        float: left;
+        margin-right: 10px;
+    }
 
     .icon {
         display: inline-block;
@@ -753,12 +763,15 @@
         width: 1.28571429em;
         text-align: center;
     }
+
     .label-primary {
         background-color: #337ab7;
     }
+
     .label-success {
         background-color: #5cb85c;
     }
+
     .label {
         display: inline;
         padding: .2em .3em;
@@ -771,6 +784,7 @@
         vertical-align: baseline;
         border-radius: .25em;
     }
+
     .stretch {
         width: 100%;
     }
