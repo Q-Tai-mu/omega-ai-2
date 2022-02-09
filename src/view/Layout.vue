@@ -64,5 +64,7 @@ export default {
   border-block-color: #fff;
   background-color: #f3f3f3;
   border-radius: 5px;
+  background: url(".././assets/2054106.jpg")no-repeat;
+  background-size: 100% 100%;
 }
 </style>

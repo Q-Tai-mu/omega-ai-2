@@ -18,7 +18,10 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
-
+// width: 1334,
+//     height: 830,
+//  minHeight:726,
+//     minWidth:1052,
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
