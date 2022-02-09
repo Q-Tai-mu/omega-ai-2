@@ -110,55 +110,11 @@
                         <span class="search-the-bold">热搜</span>
                     </div>
                     <div class="search-the-hot">
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-rn">新</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
-                        </div>
-                        <div class="hot-search-block">
-                            <div class="hot-1">1</div>
-                            <div class="block-txt">菠萝业界与</div>
-                            <div class="block-re">热</div>
+                        <div class="hot-search-block" v-for="(item,index) in hotSearchs" :key="item.id">
+                            <div class="hot-1">{{index+1}}</div>
+                            <div class="block-txt">{{item.hotSearch_key}}</div>
+                            <div class="block-rn" v-if="item.hotSearch_res == 0">新</div>
+                            <div class="block-re" v-if="item.hotSearch_res == 1">热</div>
                         </div>
                     </div>
                 </div>
@@ -246,7 +202,8 @@
             return {
                 searchForState: "off",
                 searchValue: "",
-                historys: []
+                historys: [],
+                hotSearchs: []
             };
         },
         created() {
@@ -265,11 +222,7 @@
 
             axios
                 .get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/hotsearch.json").then((resp) => {
-                for (var i = 0; i < resp.data["hotSearch"].length; i++) {
-                    if (i < 10) {
-                        this.historys.push(resp.data["history"][i]);
-                    }
-                }
+                this.hotSearchs = resp.data["hotSearch"];
 
             }).catch((err) => {
                 this.$Message.error("热搜配置文件加载异常");
