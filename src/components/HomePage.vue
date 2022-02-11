@@ -431,7 +431,7 @@
                     this.indexUrlX = resp.data.indexUrlX;
                     this.IndexAzn = resp.data.IndexAzn;
                     // // this.doInit();
-                    axios.get("/notice.json").then((resp) => {
+                    axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/notice.json").then((resp) => {
                         this.$Modal.warning({
                             styles: "top:50px",
                             content:"1"+ resp.data["content"]
