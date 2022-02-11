@@ -105,6 +105,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="fanJu-search-history-footer">
                     <div class="search-the-left-e">
                         <span class="search-the-bold">热搜</span>
