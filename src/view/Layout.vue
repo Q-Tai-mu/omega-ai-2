@@ -56,6 +56,7 @@
                 axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/background.json").then((resp) => {
                     this.bImg = " background: url(" + resp.data["bImg"] + ") no-repeat;background-size: 100% 100%;";
                 }).catch((err) => {
+                    this.$Message.error("背景更换失败,目前网络通信不佳！");
                     this.bImg = " background-color: #f3f3f3;";
                     console.log(err);
                 })
