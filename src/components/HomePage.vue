@@ -12,7 +12,7 @@
             <at-alert :message="promptContent" type="success" show-icon></at-alert>
         </div>
         <div class="omegaAi2Div Neworldscro" v-if="whetherSearch == 'on'">
-            <div class="omegaAi2Card" v-for="item in searchResult" :key="item.id">
+            <div class="omegaAi2Card" :style="tImg" v-for="item in searchResult" :key="item.id">
                 <div class="SetUpCardLeft">
                     <div class="SetUpCardIcon" v-html="item.svgI">
                         <!-- <svg
@@ -207,6 +207,9 @@
     var cheerio = require("cheerio");
     export default {
         name: "homePage",
+        props: {
+            tImg: String
+        },
         computed: {
             url: {
                 get() {
@@ -1144,6 +1147,7 @@
         background-color: #f9f9f9;
         border: 1px solid #e5e5e5;
         /*background: url("./src/assets/2054061.jpg");*/
+        opacity: 0.96;
     }
 
     .Neworldscro {

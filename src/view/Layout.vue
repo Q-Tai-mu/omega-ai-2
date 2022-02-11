@@ -10,7 +10,7 @@
     <div id="layout" :style="bImg">
         <TitleBlock/>
         <div class="layoutPan">
-            <HomePage v-if="view === 'No1On'"/>
+            <HomePage v-if="view === 'No1On'" :t-img="eImg"/>
             <HelloWorld v-if="view === 'No2On'" msg="豚悦资源搜索器"/>
         </div>
     </div>
@@ -28,7 +28,8 @@
         components: {TitleBlock, HomePage, HelloWorld},
         data() {
             return {
-                bImg: ""
+                bImg: "",
+                eImg: ""
             }
         },
         computed: {
@@ -55,6 +56,7 @@
                 this.$Message.success("启动更换背景");
                 axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/background.json").then((resp) => {
                     this.bImg = " background: url(" + resp.data["bImg"] + ") no-repeat;background-size: 100% 100%;";
+                    this.eImg = " background: url(" + resp.data["tImg"] + ") ;";
                 }).catch((err) => {
                     this.$Message.error("背景更换失败,目前网络通信不佳！");
                     this.bImg = " background-color: #f3f3f3;";

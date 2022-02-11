@@ -75,7 +75,7 @@
                     @keyup.enter="search"
                     v-model="searchValue"
             />
-            <div class="fanJuChainsearch" v-if="searchForState == 'on'">
+            <div class="fanJuChainsearch" v-show="searchForState == 'on'">
                 <div class="fanJu-search-history-header">
                     <div class="search-the-left">
                         <span class="search-the-bold">搜索历史</span>
@@ -88,8 +88,11 @@
                 </div>
                 <div class="search-the-body">
                     <div class="search-the-body-eh">
-                        <div class="search-the-body-block" v-for="item in historys" :key="item.id">
-                            {{item.history_key}}
+                        <div class="search-the-body-block"
+                             v-for="item in historys" :key="item.id">
+                            <div @click="selectedHistory(''+item.history_key)">
+                                {{item.history_key}}
+                            </div>
                         </div>
                     </div>
                     <div class="search-the-body-footer">
@@ -113,7 +116,9 @@
                     <div class="search-the-hot">
                         <div class="hot-search-block" v-for="(item,index) in hotSearchs" :key="item.id">
                             <div class="hot-1">{{index+1}}</div>
-                            <div class="block-txt">{{item.hotSearch_key}}</div>
+                            <div class="block-txt" @click="selectedHistory(''+item.hotSearch_key)">
+                                {{item.hotSearch_key}}
+                            </div>
                             <div class="block-rn" v-if="item.hotSearch_res == 0">新</div>
                             <div class="block-re" v-if="item.hotSearch_res == 1">热</div>
                         </div>
@@ -233,7 +238,9 @@
         methods: {
             ...mapMutations(["SET_HURL"]),
             search() {
-
+                //存储到历史json
+                this.hurl = this.searchValue;
+                this.searchForState = 'off';
             },
             minWindow() {
                 // ipcRenderer.send("minWindow");
@@ -250,9 +257,16 @@
                 this.searchForState = 'on';
             },
             loseFocus() {
-                this.searchForState = 'off';
-
+                setTimeout(() => {
+                    this.searchForState = 'off';
+                }, 1000);
+                //
             },
+            selectedHistory(val) {
+                this.searchForState = 'off';
+                this.hurl = val;
+                this.searchValue = val;
+            }
         },
     };
 </script>
