@@ -26,9 +26,9 @@
     export default {
         name: "layout",
         components: {TitleBlock, HomePage, HelloWorld},
-        data(){
+        data() {
             return {
-                bImg:""
+                bImg: ""
             }
         },
         computed: {
@@ -54,8 +54,9 @@
             setLayoutBackground() {
                 this.$Message.success("启动更换背景");
                 axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/background.json").then((resp) => {
-                  this.bImg = " background: url("+resp.data["bImg"]+") no-repeat;background-size: 100% 100%;";
+                    this.bImg = " background: url(" + resp.data["bImg"] + ") no-repeat;background-size: 100% 100%;";
                 }).catch((err) => {
+                    this.bImg = " background-color: #f3f3f3;";
                     console.log(err);
                 })
             }
