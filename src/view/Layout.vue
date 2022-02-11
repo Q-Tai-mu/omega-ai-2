@@ -42,9 +42,8 @@
             },
         },
         created() {
+            setTimeout(this.setLayoutBackground, 3000);
             setTimeout(this.onSetView, 3000);
-
-            this.setLayoutBackground();
         },
         methods: {
             ...mapMutations(["SET_VIEW"]),
@@ -53,8 +52,9 @@
                 this.view = "No1On";
             },
             setLayoutBackground() {
-                axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/src/assets/2000411.jpg").then((resp) => {
-                  this.bImg = " background: url("+resp.data["bImg"]+") no-repeat;";
+                this.$Message.success("启动更换背景");
+                axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/background.json").then((resp) => {
+                  this.bImg = " background: url("+resp.data["bImg"]+") no-repeat;background-size: 100% 100%;";
                 }).catch((err) => {
                     console.log(err);
                 })
@@ -81,7 +81,7 @@
         border-block-color: #fff;
         background-color: #f3f3f3;
         border-radius: 5px;
-        /*background: url(".././assets/2054106.jpg") no-repeat;*/
+        /*background: url("https://pic.netbian.com/uploads/allimg/220211/004115-16445112750af5.jpg") no-repeat;*/
         background-size: 100% 100%;
     }
 </style>
