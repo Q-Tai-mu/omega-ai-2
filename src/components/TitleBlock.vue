@@ -116,7 +116,8 @@
                             <div class="block-rn" v-if="item.hotSearch_res == 0">新</div>
                             豚悦资源搜索器
                             名称/关键词...
-                            欢迎使用豚悦资源搜索器 磁力搜索 豚悦资源搜索器 可                    <div class="block-re" v-if="item.hotSearch_res == 1">热</div>
+                            欢迎使用豚悦资源搜索器 磁力搜索 豚悦资源搜索器 可
+                            <div class="block-re" v-if="item.hotSearch_res == 1">热</div>
                         </div>
                     </div>
                 </div>
