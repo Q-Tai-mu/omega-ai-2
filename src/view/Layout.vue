@@ -77,6 +77,7 @@
                             });
                         }
                     }).catch((err) => {
+                        this.$Message.error("应用版本检测失败,目前网络通信不佳！");
                         console.log(err);
                     });
                 }).catch((err) => {
