@@ -69,7 +69,7 @@
             testVersion() {
                 axios.get("/version.json").then((resp) => {
                     this.version = resp.data["version"];
-                    axios.get("").then((resp) => {
+                    axios.get("https://raw.githubusercontent.com/Q-Tai-mu/omega-ai-2/main/public/versionPub.json").then((resp) => {
                         this.versionPub = resp.data["version"];
                         if (this.version < this.versionPub) {
                             this.$Modal.warning({
