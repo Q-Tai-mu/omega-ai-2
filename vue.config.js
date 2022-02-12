@@ -11,7 +11,7 @@ module.exports = {
         electronBuilder: {
             nodeIntegration: true,
             builderOptions: {
-                productName:"豚悦资源搜索器-虎年特供版",
+                productName:"豚悦资源搜索器",
                 copyright:"Copyright @ 2020 Mario-er",
                 // options placed here will be merged with default configuration and passed to electron-builder
                 win: {

@@ -29,7 +29,9 @@
         data() {
             return {
                 bImg: "",
-                eImg: ""
+                eImg: "",
+                version: 0,
+                versionPub: 0,
             }
         },
         computed: {
@@ -43,6 +45,7 @@
             },
         },
         created() {
+            setTimeout(this.testVersion, 5000);
             setTimeout(this.setLayoutBackground, 3000);
             setTimeout(this.onSetView, 3000);
         },
@@ -62,6 +65,23 @@
                     this.bImg = " background-color: #f3f3f3;";
                     console.log(err);
                 })
+            },
+            testVersion() {
+                axios.get("/version.json").then((resp) => {
+                    this.version = resp.data["version"];
+                    axios.get("").then((resp) => {
+                        this.versionPub = resp.data["version"];
+                        if (this.version < this.versionPub) {
+                            this.$Modal.warning({
+                                content: "有新的版本！请前往官网:https://q-tai-mu.github.io/ 下载最新版本"
+                            });
+                        }
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+                }).catch((err) => {
+                    console.log(err);
+                });
             }
         },
     };
